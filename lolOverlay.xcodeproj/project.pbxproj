@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		30B3C2ED2E179D26009CFC39 /* lolOverlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = lolOverlay.app; path = /Users/jams/Desktop/lolOverlay/build/Debug/lolOverlay.app; sourceTree = "<absolute>"; };
+		3093B8F82E188163002D0C5B /* lolOverlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lolOverlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				30B3C2EF2E179D26009CFC39 /* lolOverlay */,
+				3093B8F82E188163002D0C5B /* lolOverlay.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = lolOverlay;
-			productReference = 30B3C2ED2E179D26009CFC39 /* lolOverlay.app */;
+			productReference = 3093B8F82E188163002D0C5B /* lolOverlay.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

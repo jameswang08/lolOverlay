@@ -12,6 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var window: OverlayWindow?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Initialize overlay
         let contentView = OverlayView()
         let hostingView = NSHostingView(rootView: contentView)
         hostingView.frame = NSScreen.main?.frame ?? .zero
