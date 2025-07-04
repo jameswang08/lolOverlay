@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         window = OverlayWindow(contentView: hostingView)
         window?.orderFrontRegardless()
-
+        window?.level = NSWindow.Level(rawValue: 2_000_000) // fix to make this show in lol 
         print("Overlay window frame: \(window?.frame ?? .zero)")
     }
 }
