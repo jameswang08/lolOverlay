@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct lolOverlayApp: App {
+struct LolOverlayApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        Settings {
+            EmptyView()
         }
     }
 }

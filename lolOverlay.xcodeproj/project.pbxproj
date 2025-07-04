@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		30B3C2ED2E179D26009CFC39 /* lolOverlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lolOverlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B3C2ED2E179D26009CFC39 /* lolOverlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = lolOverlay.app; path = /Users/jams/Desktop/lolOverlay/build/Debug/lolOverlay.app; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,16 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				30B3C2EF2E179D26009CFC39 /* lolOverlay */,
-				30B3C2EE2E179D26009CFC39 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		30B3C2EE2E179D26009CFC39 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				30B3C2ED2E179D26009CFC39 /* lolOverlay.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +86,7 @@
 			mainGroup = 30B3C2E42E179D26009CFC39;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 30B3C2EE2E179D26009CFC39 /* Products */;
+			productRefGroup = 30B3C2E42E179D26009CFC39;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
