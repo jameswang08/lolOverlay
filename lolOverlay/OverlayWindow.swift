@@ -20,7 +20,7 @@ class OverlayWindow: NSWindow {
             backing: .buffered,
             defer: false)
 
-        self.level = .screenSaver
+        self.level = .popUpMenu
         self.isOpaque = false
         self.backgroundColor = .clear
         self.ignoresMouseEvents = true

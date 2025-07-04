@@ -19,8 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         hostingView.autoresizingMask = [.width, .height]
 
         hostingView.wantsLayer = true
-        hostingView.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.3).cgColor
-
+        hostingView.layer?.backgroundColor = NSColor.clear.cgColor
+        
         window = OverlayWindow(contentView: hostingView)
         window?.orderFrontRegardless()
         window?.level = NSWindow.Level(rawValue: 2_000_000) // fix to make this show in lol 
