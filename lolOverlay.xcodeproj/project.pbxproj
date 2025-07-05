@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		307439FF2E19CF3B00479C80 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 307439F52E19CF3B00479C80 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		307439F52E19CF3B00479C80 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3093B8F82E188163002D0C5B /* lolOverlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lolOverlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		30B3C2E42E179D26009CFC39 = {
 			isa = PBXGroup;
 			children = (
+				307439F52E19CF3B00479C80 /* README.md */,
 				30B3C2EF2E179D26009CFC39 /* lolOverlay */,
 				3093B8F82E188163002D0C5B /* lolOverlay.app */,
 			);
@@ -101,6 +107,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				307439FF2E19CF3B00479C80 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
