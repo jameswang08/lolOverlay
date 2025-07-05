@@ -14,7 +14,8 @@ struct OverlayView: View {
     private var timeString: String {
         let minutes = remainingSeconds / 60
         let seconds = remainingSeconds % 60
-        return String(format: "%02d:%02d", minutes, seconds)
+        return String("HELLO WORLD")
+//        return String(format: "%02d:%02d and then kaboom", minutes, seconds)
     }
 
     var body: some View {
