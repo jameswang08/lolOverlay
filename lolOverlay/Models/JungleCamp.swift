@@ -10,48 +10,41 @@ import CoreGraphics
 // class to store state of camps
 class JungleCamp {
     let name: String
-    let side: String?
-    var lastCleared: UInt16?
+    let side: String
+    let respawnTime: UInt8
+    var lastCleared: UInt16
     let region: CGRect
     
-    var respawnTime: Int {
-        fatalError("Subclasses must override respawnTime")
-    }
     
-    init(name: String, side: String?, region: CGRect) {
+    init(name: String, side: String, respawnTime: UInt8, lastCleared: UInt16, region: CGRect) {
         self.name = name
         self.side = side
+        self.respawnTime = respawnTime
+        self.lastCleared = lastCleared
         self.region = region
-        self.lastCleared = nil
     }
 }
 
-class BlueSentinel: JungleCamp {
-    override var respawnTime: Int { 300 }
-    init(side: String, region: CGRect) { super.init(name: "Blue", side: side, region: region) }
-}
+let screenWidth: CGFloat = 1440
+let screenHeight: CGFloat = 900
 
-class RedBrambleback: JungleCamp {
-    override var respawnTime: Int { 300 }
-    init(side: String, region: CGRect) { super.init(name: "Red", side: side, region: region) }
-}
+let testJungleCampsAbsolute = [
+    // Blue side (left side)
+    TestCampPosition(id: "krugs_left", marker: "Krugs", position: CGPoint(x: 0.89 * screenWidth, y: 0.92 * screenHeight)),
+    TestCampPosition(id: "red_left", marker: "Red", position: CGPoint(x: 0.88 * screenWidth, y: 0.89 * screenHeight)),
+    TestCampPosition(id: "raptors_left", marker: "Raptors", position: CGPoint(x: 0.87 * screenWidth, y: 0.86 * screenHeight)),
+    
+    TestCampPosition(id: "wolves_left", marker: "Wolves", position: CGPoint(x: 0.82 * screenWidth, y: 0.83 * screenHeight)),
+    TestCampPosition(id: "blue_left", marker: "Blue", position: CGPoint(x: 0.83 * screenWidth, y: 0.80 * screenHeight)),
+    TestCampPosition(id: "gromp_left", marker: "Gromp", position: CGPoint(x: 0.80 * screenWidth, y: 0.78 * screenHeight)),
 
-class Raptors: JungleCamp {
-    override var respawnTime: Int { 135 }
-    init(side: String, region: CGRect) { super.init(name: "Raptors", side: side, region: region) }
-}
+    // Red side (right side)
+    TestCampPosition(id: "krugs_right", marker: "Krugs", position: CGPoint(x: 0.868 * screenWidth, y: 0.697 * screenHeight)),
+    TestCampPosition(id: "red_right", marker: "Red", position: CGPoint(x: 0.875 * screenWidth, y: 0.725 * screenHeight)),
+    TestCampPosition(id: "raptors_right", marker: "Raptors", position: CGPoint(x: 0.89 * screenWidth, y: 0.76 * screenHeight)),
+    
+    TestCampPosition(id: "wolves_right", marker: "Wolves", position: CGPoint(x: 0.935 * screenWidth, y: 0.78 * screenHeight)),
+    TestCampPosition(id: "blue_right", marker: "Blue", position: CGPoint(x: 0.93 * screenWidth, y: 0.82 * screenHeight)),
+    TestCampPosition(id: "gromp_right", marker: "Gromp", position: CGPoint(x: 0.948 * screenWidth, y: 0.83 * screenHeight)),
+]
 
-class Wolves: JungleCamp {
-    override var respawnTime: Int { 135 }
-    init(side: String, region: CGRect) { super.init(name: "Wolves", side: side, region: region) }
-}
-
-class Krugs: JungleCamp {
-    override var respawnTime: Int { 135 }
-    init(side: String, region: CGRect) { super.init(name: "Krugs", side: side, region: region) }
-}
-
-class Gromp: JungleCamp {
-    override var respawnTime: Int { 135 }
-    init(side: String, region: CGRect) { super.init(name: "Gromp", side: side, region: region) }
-}
