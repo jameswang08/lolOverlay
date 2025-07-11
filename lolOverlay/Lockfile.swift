@@ -7,7 +7,6 @@
 
 import Foundation
 
-// struct to parse data in Lockfile to extract port for locally hosted LCU API
 struct Lockfile {
     let port: String
     let token: String
@@ -15,10 +14,15 @@ struct Lockfile {
     static func read() -> Lockfile? {
         let lockfilePath = ("/Applications/League of Legends.app/Contents/LoL/lockfile" as NSString).expandingTildeInPath
         do {
+            // Specify UTF-8 encoding explicitly to avoid deprecation warning
             let content = try String(contentsOfFile: lockfilePath, encoding: .utf8)
             let parts = content.components(separatedBy: ":")
             guard parts.count > 4 else { return nil }
-            return Lockfile(port: parts[2], token: parts[3])
+            
+            let port = parts[2]   // Correct index for port
+            let token = parts[3]  // Correct index for token (password)
+            
+            return Lockfile(port: port, token: token)
         } catch {
             print("Failed to read lockfile: \(error)")
             return nil
