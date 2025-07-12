@@ -146,7 +146,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func showOverlay() {
         guard window == nil else { return } // Already shown
 
-        let contentView = TimerView()
+        let contentView = JungleTimerView()
         let hostingView = NSHostingView(rootView: contentView)
         hostingView.frame = NSScreen.main?.frame ?? .zero
         hostingView.autoresizingMask = [.width, .height]

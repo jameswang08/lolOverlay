@@ -24,8 +24,9 @@ struct TimerView: View {
         ZStack {
             Color.clear
             Text(timeString)
-                .foregroundColor(.white)
-                .font(.system(size: 40, weight: .bold))
+                .foregroundColor(.green)
+                .font(.system(size: 12))
+                .opacity(0.7)
                 .onReceive(timer) { _ in
                     if remainingSeconds > 0 {
                         remainingSeconds -= 1
