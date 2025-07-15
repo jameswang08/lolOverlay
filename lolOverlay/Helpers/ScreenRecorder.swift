@@ -9,10 +9,10 @@ import Foundation
 import ScreenCaptureKit
 
 @MainActor
-class ScreenRecorder: NSObject, ObservableObject {
-    
+class ScreenRecorder: NSObject, SCStreamDelegate {
+        
     private var stream: SCStream?
-    private var lolWindow: SCWindow?
+    private let streamQueue = DispatchQueue(label: "com.lolOverlay.streamQueue")
     
     // Configure video stream to capture a ss every 5 seconds
     private var streamConfiguration: SCStreamConfiguration {
@@ -20,12 +20,6 @@ class ScreenRecorder: NSObject, ObservableObject {
         streamConfig.minimumFrameInterval = CMTime(value: 5, timescale: 0)
         return streamConfig
     }
-    
-    private var contentFilter: SCContentFilter {
-        var filter = SCContentFilter(desktopIndependentWindow: lolWindow!)
-        return filter
-    }
-    
     
     func start() async throws {
         let allWindows = try await SCShareableContent.excludingDesktopWindows(true,
@@ -45,17 +39,26 @@ class ScreenRecorder: NSObject, ObservableObject {
         }
         
         let config = streamConfiguration
-        let filter = contentFilter
+        let contentFilter = SCContentFilter(desktopIndependentWindow: lolWindow)
+        
+        stream = SCStream(filter: contentFilter, configuration: config, delegate: self)
+        try stream?.addStreamOutput(self, type: .screen, sampleHandlerQueue: streamQueue)
+        try await stream?.startCapture()
+        
+        print("Stream started.")
 
     }
     
-    func stop() async {
-        do {
-            try await stream?.stopCapture()
-            print("Recording stopped.")
-        } catch {
-            print("Failed to stop capture: \(error)")
-        }
+    func stop() async throws{
+        try await stream?.stopCapture()
+        print("Recording stopped.")
     }
 }
 
+extension ScreenRecorder: SCStreamOutput {
+    nonisolated func stream(_ stream: SCStream, didOutputSampleBuffer sampleBuffer: CMSampleBuffer, of type: SCStreamOutputType) {
+        if type == .screen {
+            MinimapProcessor.processFrame(sampleBuffer)
+        }
+    }
+}
