@@ -16,26 +16,29 @@ class ScreenRecorder: NSObject, SCStreamDelegate {
     
     // Configure video stream to capture a ss every 5 seconds
     private var streamConfiguration: SCStreamConfiguration {
-        var streamConfig = SCStreamConfiguration()
+        let streamConfig = SCStreamConfiguration()
         streamConfig.minimumFrameInterval = CMTime(value: 5, timescale: 0)
         return streamConfig
     }
     
     func start() async throws {
-        let allWindows = try await SCShareableContent.excludingDesktopWindows(true,
-                                                                               onScreenWindowsOnly: false)
-        // Find the League of Legends client window
-        guard let lolWindow = allWindows.windows.first(
-            where: { window in
-                guard let app = window.owningApplication,
-                      let title = window.title else {
-                    return false
+        
+        guard let lolWindow = (try await SCShareableContent
+            .excludingDesktopWindows(true, onScreenWindowsOnly: false))
+            .windows
+            .first(where: { window in
+                func normalize(_ str: String?) -> String {
+                    return str?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() ?? ""
                 }
-                return app.applicationName == "League of Legends" &&
-                       title == "League of Legends (TM) Client"
+
+                let appName = normalize(window.owningApplication?.applicationName)
+                let title = normalize(window.title)
+
+                return appName == "league of legends" &&
+                       title == "league of legends (tm) client"
             }) else {
-            print("Matching window not found.")
-            return
+                print("League of Legends window not found")
+                return
         }
         
         let config = streamConfiguration
